@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class ="main">
+        <div class="header">Library</div>
+        <button onclick="clearAll()">Clear all</button>
+        <div class="bookDisplay">
+            
+            <!-- <div class="card">
+                <p class ="bookname"></p>
+                <button>Remove</button>
+            </div> -->
+
+        </div>
+        <div class="addBook" onclick="showForm()">
+            <button>Add Book</button>
+        </div>
+
+        <div class ="bookForm">
+            <h2>Add new book</h2>
+            <hr>
+            <form onsubmit="return mySubmitFunction(event)" autocomplete="off">
+            <label for = "author">Author</label>
+            <input type = "text" name ="author" class="author"> <br>
+            <label for = "title">Title</label>
+            <input type = "text" name="title" class = "title"> <br>
+            <label for = "no_pages">No of pages</label> 
+            <input type = "number" name = "no_pages" class = "pages"> <br>
+            <label for = "readToggle" >Read</label> 
+            <input type="checkbox" name = "readToggle" class = "read"> <br>
+            <button onclick="addBookToLibrary()">Save</button>
+         </form>
+        </div>
+    
+    </div>
+    
+</body>
+<script src = "script.js"></script>
+</html>

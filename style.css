@@ -1,0 +1,22 @@
+.bookForm
+{
+    visibility: hidden;
+    width: 100%;
+    padding: 5px;
+    margin: 0 auto;
+    width: fit-content;
+    border: 1px solid black;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+input
+{
+    margin: 5px;
+}
