@@ -1,5 +1,7 @@
 let myLibrary = []
 
+
+//constructor
 function Book(title,author,pages,read,id)
 {
     this.title = title;
@@ -8,6 +10,8 @@ function Book(title,author,pages,read,id)
     this.read = read;
     this.id = id;
 }
+
+//looks for previous data of array in localstorage if not present its empty
 function lookForArray()
 {
     try {
@@ -20,6 +24,8 @@ function lookForArray()
     }
     
 }
+
+//populates the localstorage
 function populateStorage(book)
 {
     // localStorage.setItem(`book:${book.id}`,book);
@@ -29,6 +35,8 @@ function populateStorage(book)
     console.log(mytemplib);
     localStorage.setItem("bookarray",JSON.stringify(mytemplib));
 }
+
+//removes a specific book from the array 
 function removeFromStorage(id)
 {
     let mytemplib = JSON.parse(localStorage.getItem("bookarray"));
@@ -44,10 +52,17 @@ function removeFromStorage(id)
         console.log("templib",mytemplib);
     localStorage.setItem("bookarray",JSON.stringify(mytemplib));
 }
+
+//makes the add book element visible
 function showForm()
 {
     document.querySelector(".bookForm").style ="visibility:visible";
 }
+function hideForm()
+{
+    document.querySelector(".bookForm").style ="visibility:hidden";
+}
+//adds the book to the array and passes it to bookDisplay2();
 function addBookToLibrary()
 {
     let author = document.querySelector(".author").value;
@@ -55,13 +70,22 @@ function addBookToLibrary()
     let pages = document.querySelector(".pages").value;
     let read = document.querySelector(".read").checked;
     let id = Date.now();
-    let newBook = new Book(title,author,pages,read,id);
-    myLibrary.push(newBook);
-    populateStorage(newBook);
-    // console.log(newBook);
-    // console.log(myLibrary);
-    bookDisplay2(author,title,pages,read,id);
-    console.log("mylibrary after adding",myLibrary);
+    if(!(author&&title&&pages))
+    {
+        alert("Enter all values");
+    }
+    else
+    {
+
+        console.log(author,title,document.querySelector(".pages"),read)
+        let newBook = new Book(title,author,pages,read,id);
+        myLibrary.push(newBook);
+        populateStorage(newBook);
+        // console.log(newBook);
+        // console.log(myLibrary);
+        bookDisplay2(author,title,pages,read,id);
+        console.log("mylibrary after adding",myLibrary);
+    }
 }
 
 
@@ -72,7 +96,9 @@ function bookDisplay2(author,title,pages,read,id)
     let card = document.createElement("div");
     let bookdetails = document.createElement("p");
     let remove_button = document.createElement("button")
+    remove_button.className ="remove_butt";
     // let id = id;
+    card.id = `card`;
     card.className = `card_${id}`;
     console.log("above on click ")
     remove_button.addEventListener("click",()=>
@@ -81,14 +107,78 @@ function bookDisplay2(author,title,pages,read,id)
     })
     console.log("below onclick")
     remove_button.textContent="Remove"
-    bookdetails.innerHTML = `Title:- ${title}<br> Author:- ${author}<br>Pages:- ${pages}<br>Read:- ${read?"Yes":"No"}`;
+    bookdetails.innerHTML = `<i class="bi-bookmark-check-fill" id=bookmark_${id} onclick=readBook(${id})></i>
+    <div class="card-content">
+    <span class="title_card">
+    ${title}</span><br> 
+    <span class="author_card">${author}</span><br>
+    <span class="pages_card">Pages:- ${pages}</span><br>
+    
+    </div>`;
+    console.log(bookdetails)
     // bookdetails.append(node);
+    // <span class="readornot" id="readornot_${id}">Read:- ${read?"Yes":"No"} </span>
     card.appendChild(bookdetails);
     card.append(remove_button);
     // console.log(e);
     bookDisplay.append(card)
-    // bookDisplay.append(card);
+    addToSidebar(title,read,id);
     console.log(document);
+    if(read){readBook(id);}
+}
+
+function readBook(id)
+{
+    let bookmark = document.querySelector(`#bookmark_${id}`);
+    console.log(bookmark);
+    bookmark.classList.toggle("bookmark-read");
+    // console.log();    
+    // let readornot = document.querySelector(`#readornot_${id}`);
+    // readornot.textContent = `Read:- ${bookmark.classList.contains("bookmark-read")?"Yes":"No"}`;
+    // console.log(readornot);
+    read_bool = bookmark.classList.contains("bookmark-read");
+    changeSidebar(read_bool,id);
+
+
+
+    myLibrary.forEach(e=>
+        {
+            if(e.id==id)
+            {
+                e.read=read_bool;
+            }
+        })
+}
+function addToSidebar(title,read,id)
+{
+    let ul;
+    if(read){ ul = document.querySelector(".books_read");}
+    else{ul = document.querySelector(".books_notread");}
+    let li = document.createElement("li");
+        li.id = `book_${id}`;   
+    li.textContent = title;
+    ul.append(li);
+}
+function changeSidebar(read_bool,id)
+{
+    let ul =document.querySelector(".books_read");
+    let ul2 = document.querySelector(".books_notread");
+    if(!read_bool)
+    {
+        let li = document.querySelector(`#book_${id}`)
+        li.remove();
+        ul2.append(li);
+    }
+    else
+    {
+        let li = document.querySelector(`#book_${id}`)
+        li.remove();
+        ul.append(li);
+    }
+}
+function removeFromSidebar(id)
+{
+    document.querySelector(`#book_${id}`).remove();
 }
 //iterates over the array and passes each object to bookDisplay2
 function bookDisplay(book)
@@ -97,40 +187,6 @@ function bookDisplay(book)
         bookDisplay2(element.author,element.title,element.pages,element.read,element.id);
     });
 }
-// function bookDisplay()
-// {   
-//     let bookDisplay = document.querySelector(".bookDisplay");
-//     // let card =document.querySelector(".card");
-//     // let bookname =card.querySelector(".bookname");
-
-//     // console.log(bookname);
-//     myLibrary.forEach((e)=>
-//     {  
-        
-//         let card = document.createElement("div");
-//         let bookdetails = document.createElement("p");
-//         let remove_button = document.createElement("button")
-//         let id = e.id;
-//         card.className = `card_${e.id}`;
-//         console.log("above on click ")
-//         remove_button.addEventListener("click",()=>
-//         {
-//             removeBook(id);
-//         })
-//         console.log("below onclick")
-//         remove_button.textContent="Remove"
-//         bookdetails.innerHTML = `Title:- ${e.title}<br> Author:- ${e.author}<br>Pages:- ${e.pages}<br>Read:- ${e.read?"Yes":"No"}`;
-//         // bookdetails.append(node);
-//         card.appendChild(bookdetails);
-//         card.append(remove_button);
-//         // console.log(e);
-//         bookDisplay.append(card)
-//         // bookDisplay.append(card);
-//         console.log(document);
-//     })
-//     // console.log(bookDisplay);
-
-// }
 
 //removes book 
 function removeBook(id)
@@ -146,12 +202,16 @@ function removeBook(id)
     card.remove();
     console.log("mylibrary after removing",myLibrary);
     removeFromStorage(id);
+    removeFromSidebar(id);
 }
 
+//prevents submit button from refreshing the page
 function mySubmitFunction(e) {
     e.preventDefault();
     return false;
   }
+
+//removes all the books from the display
 function removeAllBooks(book)
 {
     book.forEach(e=>
@@ -159,6 +219,8 @@ function removeAllBooks(book)
             removeBook(e.id);
         })
 }
+
+//removes all the books from localstorage
 function clearAll()
 {
     let templib = JSON.parse(localStorage.getItem("bookarray"));

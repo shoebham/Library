@@ -1,13 +1,167 @@
+body
+{
+    margin:0 auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background-color: midnightblue; */
+}
+
+.header
+{
+position: relative;
+text-align: center;
+}
+.h1_header
+{
+    margin:0 auto;
+    padding: 25px; ;
+    color:white;
+    width: auto;
+    text-align: center;
+    height: auto;
+    font-size: 36px;
+    background-color: black;
+}
+
+.sidebar{
+    color:white;
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position:absolute;
+    z-index: 1;
+    /* top: 0;  */
+    /* left: 0; */
+    background-color: #111; /* Black */
+    overflow:hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+.main
+{
+    margin-left:200px;
+}
+/* button{
+    background-color: inherit;
+    border-radius: 10px;
+    color:white;
+    padding:10px;
+} */
+
+button
+{
+    border-radius: 20px;
+    /* border:2px solid rgba(137, 255, 122, 0.712); */
+    box-shadow: -2px 5px 5px rgba(0, 0, 0, 0.452);
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+}
+
+
 .bookForm
 {
     visibility: hidden;
     width: 100%;
-    padding: 5px;
+    padding: 15px;
+    font-size: 18px;
     margin: 0 auto;
     width: fit-content;
     border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+    
 }
 
+.save_butt
+{
+    height: 50px;
+    width: 110px;
+    border-radius: 50px;
+    font-size:18px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+.save_butt:hover
+{    cursor: pointer;
+    background-color: rgba(61, 168, 255, 0.712);
+    color:white; 
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+
+}
+
+.addBook
+{
+    text-align: center;
+    
+}
+.add_butt{
+
+    margin: 10px;
+    height: 50px;
+    width: 125px;
+    font-size:18px;
+
+}
+.add_butt:hover
+{
+    cursor: pointer;
+    background-color: rgba(76, 255, 52, 0.712);
+    color:black; 
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+}
+
+.clear_butt
+{
+    width: 125px;
+    font-size:18px;
+    margin:10px;
+    float: right;
+    height: 50px;
+}
+.clear_butt:hover{
+    cursor: pointer;
+    background-color: rgba(255, 1, 1, 0.712);
+    color:white; 
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+}
+.remove_butt
+{
+    border: none;
+    width: 80px;
+    font-size:15px;
+    font-weight: bold;
+    margin:10px;
+    height: 35px;
+    color:white;
+    background-color: black;
+}
+.remove_butt:hover
+{
+    cursor: pointer;
+    background-color: rgb(255, 1, 1);
+    color:white; 
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+}
+
+.cross
+{
+    float:right;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    box-shadow: 0px 0px 0px black;
+    background-color:transparent;
+    /* color:rgb(216, 54, 54); */
+    font-size:16px;
+    border:0;
+}
+.cross:hover{
+    cursor: pointer;
+    background-color: rgba(255, 1, 1, 0.712);
+    color:white; 
+    box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.452);
+}
 form
 {
     display: flex;
@@ -19,4 +173,57 @@ form
 input
 {
     margin: 5px;
+}
+
+#card
+{
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+    margin:5px;
+    width: 20rem;
+    border-radius: 15px;
+    
+}
+.card-content
+{
+    margin: 10px;
+    padding:10px;
+}
+.title_card
+{
+    font-size:24px;
+    text-transform: capitalize;
+}
+.author_card
+
+{
+    text-transform: capitalize;
+    color:gray
+}
+
+.bi-bookmark-check-fill
+{
+    float:right;
+    padding-right:10px;
+    font-size:24px;
+}
+.bookmark-read
+{
+
+    color: rgb(20, 255, 20);
+    cursor: pointer;
+}
+
+.bi-bookmark-check-fill:hover
+{
+color: rgb(20, 255, 20);
+cursor: pointer;
+}
+
+.bookmark-read:hover
+{
+
+    color: rgb(255, 20, 20);
+    cursor: pointer;
 }
