@@ -9,58 +9,60 @@
     <title>Document</title>
 </head>
 <body>
-    <div class ="container">
+    <!-- container -->
+    <div class ="container" id = "blur">
         <div class="header">
             <h1 class="h1_header">
               Library
             </h1>
         </div>
+        
         <div class="content">
+            <!-- sidebark which looks like a bookmark -->
             <div class="sidebar">
+                <div class="hole"></div>
                 <p style="text-align: center;margin:0 auto">Library</p><br>
                 <hr>
-                
-                    
                     <ul class="books_read">Books Read
-                    
-                    </ul>                  
-                    
+                    </ul>                  <hr>
                     <ul class="books_notread">Books not yet Read
-
-                    </ul>                  
-                
+                    </ul>                  <hr>
             </div>
+            
             <div class ="main">
+                <!-- buttons of adding and clearing -->
                 <div class="addBook" >
-                    <button class = "add_butt" onclick="showForm()">Add Book</button>
+                   <a href="#" onclick="toggle()"> <button class = "add_butt" onclick="showForm()">Add Book</button></a>
                     <button onclick="clearAll()" class = clear_butt>Clear all</button>
                 </div>
+                <!-- Card display where all books card are shown -->
                 <div class="bookDisplay">
-                   <!-- <i class="bi bi-bookmark-check-fill"></i> -->
-                    <!-- <div class="card">
-                        <p class ="bookname"></p>
-                        <button>Remove</button>
-                    </div> -->
+         
 
-                </div>
-                <div class ="bookForm">
-                    <button onclick="hideForm()" class="cross">X</button>
-                    <h2>Add new book</h2>
-                    <hr>
-                    <form onsubmit="return mySubmitFunction(event)" autocomplete="off">
-                    <label for = "title">Title</label>
-                    <input type = "text" name="title" class = "title"> <br>
-                    <label for = "author">Author</label>
-                    <input type = "text" name ="author" class="author"> <br>
-                    <label for = "no_pages">No of pages</label> 
-                    <input type = "number" name = "no_pages" class = "pages"> <br>
-                    <label for = "readToggle" >Read</label> 
-                    <input type="checkbox" name = "readToggle" class = "read"> <br>
-
-                    <button onclick="addBookToLibrary()" class="save_butt">Save</button>
-                </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- popup of add book form -->
+    <div id="popup" >
+        <div class ="bookForm">
+            <button onclick="toggle()" class="cross">X</button>
+            <h2>Add new book</h2>
+            <hr>
+            <form onsubmit="return mySubmitFunction(event)" autocomplete="off">
+            <label for = "title">Title</label>
+            <input type = "text" name="title" class = "title"> <br>
+            <label for = "author">Author</label>
+            <input type = "text" name ="author" class="author"> <br>
+            <label for = "no_pages">No of pages</label> 
+            <input type = "number" name = "no_pages" class = "pages"> <br>
+            <label for = "readToggle" >Read</label> 
+            <input type="checkbox" name = "readToggle" class = "read"> <br>
+            <label for = "imageurl" > image url</label>
+            <input type="text" name = "imageurl" class = "imageurl"> <br>
+            <button onclick="addBookToLibrary()" class="save_butt">Save</button>
+        </form>
         </div>
     </div>
 </body>

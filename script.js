@@ -54,10 +54,10 @@ function removeFromStorage(id)
 }
 
 //makes the add book element visible
-function showForm()
-{
-    document.querySelector(".bookForm").style ="visibility:visible";
-}
+// function showForm()
+// {
+//     document.querySelector(".bookForm").style ="visibility:visible";
+// }
 function hideForm()
 {
     document.querySelector(".bookForm").style ="visibility:hidden";
@@ -85,6 +85,8 @@ function addBookToLibrary()
         // console.log(myLibrary);
         bookDisplay2(author,title,pages,read,id);
         console.log("mylibrary after adding",myLibrary);
+        toggle();
+        add_image();
     }
 }
 
@@ -126,7 +128,7 @@ function bookDisplay2(author,title,pages,read,id)
     console.log(document);
     if(read){readBook(id);}
 }
-
+//toggles the book as read or not
 function readBook(id)
 {
     let bookmark = document.querySelector(`#bookmark_${id}`);
@@ -149,6 +151,8 @@ function readBook(id)
             }
         })
 }
+
+//adds to side bar
 function addToSidebar(title,read,id)
 {
     let ul;
@@ -159,6 +163,8 @@ function addToSidebar(title,read,id)
     li.textContent = title;
     ul.append(li);
 }
+
+//changes sidebar if book read is toggled
 function changeSidebar(read_bool,id)
 {
     let ul =document.querySelector(".books_read");
@@ -176,6 +182,8 @@ function changeSidebar(read_bool,id)
         ul.append(li);
     }
 }
+
+//removes from side bar if a book is removed
 function removeFromSidebar(id)
 {
     document.querySelector(`#book_${id}`).remove();
@@ -229,3 +237,19 @@ function clearAll()
 }
 //   bookDisplay();
 lookForArray();
+
+//toggles blur background of popup
+function toggle() {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popoup = document.getElementById("popup");
+    popup.classList.toggle("active");
+    return false;
+  }
+  //adds image to the card
+  function add_image()
+  {
+      let imageurl = document.querySelector(".imageurl").value;
+      let card = document.querySelector("#card");
+      card.style = `background-image:url("${imageurl}")`;
+  }

@@ -2,6 +2,7 @@ body
 {
     margin:0 auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to right, #7f53ac 0, #657ced 100%);
     /* background-color: midnightblue; */
 }
 
@@ -14,26 +15,30 @@ text-align: center;
 {
     margin:0 auto;
     padding: 25px; ;
-    color:white;
+    color:rgb(43, 40, 40);
     width: auto;
     text-align: center;
     height: auto;
     font-size: 36px;
-    background-color: black;
+    /* background-color: black; */
+    /* background-image: linear-gradient(to left, #c0c0c0 0, #087bff 100%); */
 }
 
 .sidebar{
-    color:white;
+    color:black;
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 200px; /* Set the width of the sidebar */
+    border: 1px solid black;
+    font-size:16px;
+    border-radius: 20px;
+    box-shadow: -5px 5px 5px black;
     position:absolute;
     z-index: 1;
-    /* top: 0;  */
-    /* left: 0; */
-    background-color: #111; /* Black */
-    overflow:hidden; /* Disable horizontal scroll */
     padding-top: 20px;
 }
+
+
+
 .main
 {
     margin-left:200px;
@@ -60,7 +65,7 @@ button:hover{
 
 .bookForm
 {
-    visibility: hidden;
+    /* visibility: hidden; */
     width: 100%;
     padding: 15px;
     font-size: 18px;
@@ -101,14 +106,15 @@ button:hover{
     height: 50px;
     width: 125px;
     font-size:18px;
+    
 
 }
 .add_butt:hover
 {
     cursor: pointer;
     background-color: rgba(76, 255, 52, 0.712);
-    color:black; 
-    box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452);
+    color:white; 
+    /* box-shadow: -5px 10px 2px rgba(0, 0, 0, 0.452); */
 }
 
 .clear_butt
@@ -184,11 +190,14 @@ input
     width: 20rem;
     border-radius: 15px;
     
+    
 }
 .card-content
 {
     margin: 10px;
     padding:10px;
+    font-size:18px;
+    font-weight: bold;
 }
 .title_card
 {
@@ -199,7 +208,7 @@ input
 
 {
     text-transform: capitalize;
-    color:gray
+    color:white;
 }
 
 .bi-bookmark-check-fill
@@ -227,3 +236,65 @@ cursor: pointer;
     color: rgb(255, 20, 20);
     cursor: pointer;
 }
+
+
+
+
+
+.container
+{
+    transition: .5s;
+    
+}
+
+.container#blur.active
+{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+#popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 600px; */
+    /* padding: 50px; */
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    /* background-image: linear-gradient(to right, #7f53ac 0, #657ced 100%); */
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  #popup.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+  }
+  
+  .sidebar
+  {
+      overflow: hidden;
+      border-radius: 200px 200px 0px 0px;
+      color:white;
+  }
+  .hole {
+    /* position: absolute; */
+    /* top: 20px; */
+    /* left: 20px; */
+    width: 20px;
+    height: 20px;
+    float:right;
+    margin-left:50%;
+    margin-right:50%;
+    margin-bottom: 10px;
+    /* box-shadow: 0 0 0 5000px  linear-gradient(to left, #0e001d 0, #d5dbff 100%); */
+    /* content:''; */
+    /* position:absolute; */
+    border-radius:100%;
+ 
+    box-shadow: 0px 0px 0px 2000px #4e4e4ed8;
+  }
